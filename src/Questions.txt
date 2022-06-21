@@ -1,0 +1,8 @@
+1. What are the issues that may occur when you use multiple threads that create objects using a singleton design pattern, and how to prevent them?
+
+Approach of creating singleton design pattern using Lazy instantiation won't work in multithreaded environment.  Lazy instantiation works fine with only one thread. 
+But calling getInstance() method many times  by different threads returns the different hashcode that proves that the Singleton is broken. To prevent that you need 
+to create Thread-safe Singleton by adding synchronized key word in getInstance() method signature.  By adding this keyword you ensure that if one thread is inside 
+getInstance() method then another thread won't go. Consequence of this approach is decreasing performance of getInstance() method. In order to get optimized version 
+of thread-safe Singleton version and we double-check whether the variable has already been initialized and inside if condition synchronized block is needed.
+
